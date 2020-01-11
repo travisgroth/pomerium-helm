@@ -30,6 +30,7 @@ jobs:
           track: "stable"
           chart: "nginx-ingress"
           release: nginx-ingress
+          namespace: kube-system
           values: |
             controller:
               service:
