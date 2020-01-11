@@ -29,6 +29,7 @@ jobs:
         with:
           track: "stable"
           chart: "nginx-ingress"
+          release: nginx-ingress
           values: |
             controller:
               service:
