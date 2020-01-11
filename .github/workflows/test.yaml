@@ -24,6 +24,19 @@ jobs:
           install_local_path_provisioner: true
         if: steps.lint.outputs.changed == 'true'
 
+      - name: Show kube info
+        uses: steebchen/kubectl@master
+        with:
+          args: "cluster-info"
+
+      - name: sleep
+        run: sleep 10
+
+      - name: Show kube info
+        uses: steebchen/kubectl@master
+        with:
+          args: "cluster-info"
+
       - name: Install Ingress Controller
         uses: "deliverybot/helm@v1"
         with:
