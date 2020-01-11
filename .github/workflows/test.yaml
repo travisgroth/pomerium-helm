@@ -24,25 +24,11 @@ jobs:
           install_local_path_provisioner: true
         if: steps.lint.outputs.changed == 'true'
 
-      - name: Copy kubeconfig
-        run: "cp -a ${HOME}/.kube ${GITHUB_WORKSPACE}"
-      - name: Debug
-        run: "echo home: $HOME; pwd; ls -la $HOME; ls -la .kube"
+      - uses: azure/setup-helm@v1
+        id: install
 
       - name: Install Ingress Controller
-        uses: "deliverybot/helm@v1"
-        env:
-          KUBECONFIG: .kube/config
-        with:
-          track: "stable"
-          chart: "nginx-ingress"
-          release: nginx-ingress
-          namespace: kube-system
-          # helm: helm3
-          values: |
-            controller:
-              service:
-                type: NodePort
+        run: "helm install stable/nginx-ingress --set controller.service.type='NodePort'"
 
       - name: Run chart-testing (install)
         uses: helm/chart-testing-action@v1.0.0-alpha.3
