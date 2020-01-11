@@ -1,3 +1,2 @@
 chart-dirs: .
 target-branch: master
-helm-extra-args: "--timeout 900"
