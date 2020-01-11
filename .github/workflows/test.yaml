@@ -30,7 +30,7 @@ jobs:
       - name: Install Ingress Controller
         uses: "deliverybot/helm@v1"
         env:
-          KUBECONFIG: .kube/config
+          KUBECONFIG: ${GITHUB_WORKSPACE}/.kube/config
         with:
           track: "stable"
           chart: "nginx-ingress"
