@@ -26,6 +26,8 @@ jobs:
 
       - name: Show kube info
         uses: steebchen/kubectl@master
+        env:
+          KUBECONFIG_FILE: /github/home/.kube
         with:
           args: "config view"
 
