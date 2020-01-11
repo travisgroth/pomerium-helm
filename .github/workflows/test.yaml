@@ -31,7 +31,7 @@ jobs:
         run: "helm repo add stable https://kubernetes-charts.storage.googleapis.com"
 
       - name: Install Ingress Controller
-        run: "helm install stable/nginx-ingress  --generate-name --set controller.service.type='NodePort'"
+        run: "helm install stable/nginx-ingress --generate-name --set controller.service.type='NodePort'"
 
       - name: Run chart-testing (install)
         uses: helm/chart-testing-action@v1.0.0-alpha.3
