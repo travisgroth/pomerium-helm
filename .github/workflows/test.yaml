@@ -24,13 +24,15 @@ jobs:
           install_local_path_provisioner: true
         if: steps.lint.outputs.changed == 'true'
 
-      - name: sleep
+      - name: Copy kubeconfig
+        run: "cp -a ${HOME}/.kube ${GITHUB_WORKSPACE}"
+      - name: Debug
         run: "echo home: $HOME; pwd; ls -la $HOME; ls -la .kube"
 
       - name: Install Ingress Controller
         uses: "deliverybot/helm@v1"
         env:
-          KUBECONFIG: ${GITHUB_WORKSPACE}/.kube/config
+          KUBECONFIG: .kube/config
         with:
           track: "stable"
           chart: "nginx-ingress"
