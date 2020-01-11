@@ -38,7 +38,7 @@ jobs:
           chart: "nginx-ingress"
           release: nginx-ingress
           namespace: kube-system
-          helm: helm3
+          # helm: helm3
           values: |
             controller:
               service:
