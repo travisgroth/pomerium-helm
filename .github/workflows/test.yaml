@@ -25,7 +25,7 @@ jobs:
         if: steps.lint.outputs.changed == 'true'
 
       - name: sleep
-        run: "echo home: $HOME; pwd; ls -la $HOME"
+        run: "echo home: $HOME; pwd; ls -la $HOME; ls -la .kube"
 
       - name: Install Ingress Controller
         uses: "deliverybot/helm@v1"
