@@ -32,7 +32,7 @@ jobs:
           args: "config view"
 
       - name: sleep
-        run: ls -la /github/home && find -type dir -name .kube /
+        run: "echo home: $HOME; pwd; ls -la $HOME"
 
       - name: Show kube info
         uses: steebchen/kubectl@master
