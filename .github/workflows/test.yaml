@@ -27,7 +27,7 @@ jobs:
       - name: Show kube info
         uses: steebchen/kubectl@master
         with:
-          args: "cluster-info"
+          args: "config view"
 
       - name: sleep
         run: sleep 10
@@ -44,6 +44,7 @@ jobs:
           chart: "nginx-ingress"
           release: nginx-ingress
           namespace: kube-system
+          helm: helm3
           values: |
             controller:
               service:
