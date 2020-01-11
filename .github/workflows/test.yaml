@@ -24,23 +24,13 @@ jobs:
           install_local_path_provisioner: true
         if: steps.lint.outputs.changed == 'true'
 
-      - name: Show kube info
-        uses: steebchen/kubectl@master
-        env:
-          KUBECONFIG_FILE: /github/home/.kube
-        with:
-          args: "config view"
-
       - name: sleep
         run: "echo home: $HOME; pwd; ls -la $HOME"
 
-      - name: Show kube info
-        uses: steebchen/kubectl@master
-        with:
-          args: "cluster-info"
-
       - name: Install Ingress Controller
         uses: "deliverybot/helm@v1"
+        env:
+          KUBECONFIG: .kube/config
         with:
           track: "stable"
           chart: "nginx-ingress"
