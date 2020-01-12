@@ -22,7 +22,7 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
         with:
-          charts_dir: .
+          charts_dir: "pomerium"
 
   test:
     runs-on: ubuntu-latest
