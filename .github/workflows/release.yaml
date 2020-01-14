@@ -34,5 +34,5 @@ jobs:
         id: lint
         uses: helm/chart-testing-action@v1.0.0-alpha.3
         with:
-          command: lint --all
+          command: lint
           config: .ct-release.yaml
